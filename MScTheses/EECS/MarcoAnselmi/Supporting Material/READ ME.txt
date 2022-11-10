@@ -1,0 +1,47 @@
+This is a guide on the content of the supporting material
+and on how to run the pre-trained models
+
+-------------------------------------------------------------
+
+In the Code folder you'll find the source code used for the
+training and testing
+-The code is divided into 5 files:
+---The main.py file, which is where the code is run from
+---The networks.py file, which contains the code for the network structures
+---The RPPO.py file, which contains the code for the training of the models
+---The eval.py and tester.py files, which both contain code to test the models.
+	However, meanwhile the code in eval.py runs until the user stops it, 
+	the code in test.py runs for a total of 1000 episodes and then calculates the statistics of the
+	performance of the model being used.
+
+In the Models folder you'll find the pre-trained models. There are two folders, one for each model.
+Inside each folder there are two saved models, one is the actor model (the policy network),
+the other is the critic model (the network that approximates the value function)
+-One that was trained for 250000 timesteps.
+-And one that was trained for 500000 timesteps.
+
+--------------------------------------------------------------
+RUNNING THE MODELS
+
+The models cannot be run from an executable file because there are a couple of requirements to run them
+that don't allow the creation of an executable file.
+
+In order to run the save models there are a couple of requirements that need to be met.
+(It is suggested to run the model on linux based systems for the simplicity of installing the required libraries)
+
+1. Having python installed
+2. Having the gym library installed in the python environment the code is being run from
+	- to install the gym library on windows there is a need to install a couple of other packages as well: 
+		- apackage called Swig (on windows)
+		- the Visual Studio c++ Build Tools (on windows)
+		- the Box2D library (in the python environment the code is being run from)
+
+After both requirements have been met, the models can be run from the code by following this steps:
+
+1. Copy the actor.pth file of the desired pre-trained model from the Models folder to the Results folder
+   which can be found together with the code files
+
+2. Open the code in your preferred editor and run the main.py file with the 't' variable set to either 0 or 2
+	- if the t variable is set to 0 the model will run until stopped
+	- if the t variable is set to 2 the model will run for a total of 1000 episodes
+	- if the t variable is set to 1 the code will train a new algorithm
